@@ -69,7 +69,8 @@ this) \; ofWindow.removeListener("draw" \, this) \; ofWindow.removeListener("mou
 of Life") \; ofBackground(255) \; a.width \, a.height = ofGetWidth()
 \, ofGetHeight() \; a.fbo1:allocate(a.width \, a.height) \; a.fboLines:allocate(a.width
 \, a.height) \; end \; \; \; function a.draw() \; color(255) \; a.fboCells:getTexture():setTextureMinMagFilter(GL_NEAREST
-\, GL_NEAREST) \; a.fboCells:draw(0 \, 0 \, 1200 \, 800) \; if ofelia.raster
+\, GL_NEAREST) \; a.fboCells:getTexture():setTextureWrap(GL_REPEAT
+\, GL_REPEAT) \; a.fboCells:draw(0 \, 0 \, 1200 \, 800) \; if ofelia.raster
 == 1 then \; a.fboLines:draw(0 \, 0) \; end \; end \; \; \; function
 a.mousePressed() \; \; x = (ofGetMouseX() + (a.width/a.gridNumX)) //
 (a.width/a.gridNumX) \; y = (ofGetMouseY() + (a.height/a.gridNumY))
