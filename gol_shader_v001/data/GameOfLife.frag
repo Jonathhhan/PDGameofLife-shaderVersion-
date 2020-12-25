@@ -30,24 +30,24 @@ void main() {
               get( 1, -1) +
               get( 1,  0) +
               get( 1,  1);
-    float state = float(get(0, 0));
-    if (sum == lCell_1 && state == 0.0 ||
-        sum == lCell_2 && state == 0.0 ||
-        sum == lCell_3 && state == 0.0 ||
-        sum == lCell_4 && state == 0.0 ||
-        sum == lCell_5 && state == 0.0 ||
-        sum == lCell_6 && state == 0.0 ||
-        sum == lCell_7 && state == 0.0 || 
-        sum == lCell_8 && state == 0.0) { 
+    int state = get(0, 0);
+    if (sum == lCell_1 && state == 0 ||
+        sum == lCell_2 && state == 0 ||
+        sum == lCell_3 && state == 0 ||
+        sum == lCell_4 && state == 0 ||
+        sum == lCell_5 && state == 0 ||
+        sum == lCell_6 && state == 0 ||
+        sum == lCell_7 && state == 0 || 
+        sum == lCell_8 && state == 0) { 
         gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);   
-    } else if (sum == dCell_1 && state == 1.0 || 
-               sum == dCell_2 && state == 1.0 || 
-               sum == dCell_3 && state == 1.0 || 
-               sum == dCell_4 && state == 1.0 || 
-               sum == dCell_5 && state == 1.0 || 
-               sum == dCell_6 && state == 1.0 || 
-               sum == dCell_7 && state == 1.0 || 
-               sum == dCell_8 && state == 1.0 ) {       
+    } else if (sum == dCell_1 && state == 1 || 
+               sum == dCell_2 && state == 1 || 
+               sum == dCell_3 && state == 1 || 
+               sum == dCell_4 && state == 1 || 
+               sum == dCell_5 && state == 1 || 
+               sum == dCell_6 && state == 1 || 
+               sum == dCell_7 && state == 1 || 
+               sum == dCell_8 && state == 1 ) {       
         gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
     } else {
         gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
