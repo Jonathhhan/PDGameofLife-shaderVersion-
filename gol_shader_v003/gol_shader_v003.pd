@@ -48,9 +48,9 @@
 -1 -1 0 1;
 #X obj 148 311 bng 15 250 50 0 \$0-Iterate empty Iterate 17 7 0 10
 -257985 -1 -1;
-#X obj 526 94 nbx 5 14 1 10000 0 0 empty \$0-gridNumX gridNumX 0 -8
+#X obj 526 58 nbx 5 14 1 10000 0 0 empty \$0-gridNumX gridNumX 0 -8
 0 10 -257985 -1 -1 75 256;
-#X obj 546 128 nbx 5 14 1 10000 0 0 empty \$0-gridNumY gridNumY 0 -8
+#X obj 544 111 nbx 5 14 1 10000 0 0 empty \$0-gridNumY gridNumY 0 -8
 0 10 -257985 -1 -1 50 256;
 #X obj 526 297 ofelia d -k \$0-main;
 #A __set if type(window) ~= "userdata" then \; window = ofWindow()
@@ -171,24 +171,22 @@ do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
 #X obj 44 225 text define \$0-presetCopy;
 #X obj 260 177 text get \$0-presetCopy;
 #X obj 259 115 text set \$0-presetCopy;
-#N canvas 711 206 410 403 routeList 0;
-#X obj 118 262 list prepend presetList;
-#X obj 145 304 list trim;
-#X obj 118 283 t b l;
+#N canvas 341 611 410 341 routeList 0;
+#X obj 118 220 list prepend presetList;
+#X obj 145 262 list trim;
+#X obj 118 241 t b l;
 #X obj 118 73 list split 2;
 #X obj 145 136 spigot;
 #X obj 178 115 > 2;
 #X obj 178 94 list length;
 #X obj 145 157 unpack;
-#X obj 145 241 s \$0-gridNumXpreset;
-#X obj 178 220 s \$0-gridNumYpreset;
+#X obj 145 199 s \$0-gridNumXpreset;
+#X obj 178 178 s \$0-gridNumYpreset;
 #X obj 118 115 list;
 #X obj 118 52 t l l;
 #X obj 118 94 t b l;
-#X obj 118 330 outlet;
+#X obj 118 288 outlet;
 #X obj 118 31 inlet;
-#X obj 145 178 change;
-#X obj 178 199 change;
 #X connect 0 0 2 0;
 #X connect 1 0 13 0;
 #X connect 2 0 13 0;
@@ -198,36 +196,32 @@ do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
 #X connect 4 0 7 0;
 #X connect 5 0 4 1;
 #X connect 6 0 5 0;
-#X connect 7 0 15 0;
-#X connect 7 1 16 0;
+#X connect 7 0 8 0;
+#X connect 7 1 9 0;
 #X connect 10 0 0 0;
 #X connect 11 0 3 0;
 #X connect 11 1 6 0;
 #X connect 12 0 10 0;
 #X connect 12 1 4 0;
 #X connect 14 0 11 0;
-#X connect 15 0 8 0;
-#X connect 16 0 9 0;
 #X restore 106 94 pd routeList;
 #X obj 466 220 text set \$0-preset 100;
-#N canvas 711 206 410 403 routeList 0;
-#X obj 118 262 list prepend presetList;
-#X obj 145 304 list trim;
-#X obj 118 283 t b l;
+#N canvas 773 613 410 341 routeList 0;
+#X obj 118 220 list prepend presetList;
+#X obj 145 262 list trim;
+#X obj 118 241 t b l;
 #X obj 118 73 list split 2;
 #X obj 145 136 spigot;
 #X obj 178 115 > 2;
 #X obj 178 94 list length;
 #X obj 145 157 unpack;
-#X obj 145 241 s \$0-gridNumXpreset;
-#X obj 178 220 s \$0-gridNumYpreset;
+#X obj 145 199 s \$0-gridNumXpreset;
+#X obj 178 178 s \$0-gridNumYpreset;
 #X obj 118 115 list;
 #X obj 118 52 t l l;
 #X obj 118 94 t b l;
-#X obj 118 330 outlet;
+#X obj 118 288 outlet;
 #X obj 118 31 inlet;
-#X obj 145 178 change;
-#X obj 178 199 change;
 #X connect 0 0 2 0;
 #X connect 1 0 13 0;
 #X connect 2 0 13 0;
@@ -237,16 +231,14 @@ do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
 #X connect 4 0 7 0;
 #X connect 5 0 4 1;
 #X connect 6 0 5 0;
-#X connect 7 0 15 0;
-#X connect 7 1 16 0;
+#X connect 7 0 8 0;
+#X connect 7 1 9 0;
 #X connect 10 0 0 0;
 #X connect 11 0 3 0;
 #X connect 11 1 6 0;
 #X connect 12 0 10 0;
 #X connect 12 1 4 0;
 #X connect 14 0 11 0;
-#X connect 15 0 8 0;
-#X connect 16 0 9 0;
 #X restore 260 198 pd routeList;
 #X connect 0 0 19 0;
 #X connect 1 0 8 0;
@@ -286,7 +278,7 @@ Grid_Y 0 -8 0 10 -257985 -1 -1 50 256;
 #X obj 281 282 nbx 5 14 1 10000 0 1 \$0-gridNumX \$0-gridNumXpreset
 Grid_X 0 -8 0 10 -257985 -1 -1 75 256;
 #X msg 526 193 gridNumX \$1 \, gridNumY \$2 \, gridSize;
-#X obj 546 147 t b f;
+#X obj 544 151 t b f;
 #X obj 545 416 metro 100;
 #X obj 545 437 ofelia define -k \$0-shader;
 #A __set local a = require("\$0-main") \; \; function ofelia.bang()
@@ -532,8 +524,10 @@ a.shaderGameOfLife:setUniform1i("dCell_7" \, ofelia.dCell_7) \; a.shaderGameOfLi
 #X msg 589 255 raster \$1;
 #X obj 212 311 tgl 15 1 \$0-Sequence empty Sequence 17 7 0 10 -257985
 -1 -1 0 1;
-#X connect 24 0 42 0;
-#X connect 25 0 39 0;
+#X obj 544 130 change;
+#X obj 526 77 change;
+#X connect 24 0 52 0;
+#X connect 25 0 51 0;
 #X connect 29 0 30 0;
 #X connect 30 0 31 0;
 #X connect 32 0 40 1;
@@ -546,5 +540,7 @@ a.shaderGameOfLife:setUniform1i("dCell_7" \, ofelia.dCell_7) \; a.shaderGameOfLi
 #X connect 42 0 38 0;
 #X connect 47 0 49 0;
 #X connect 49 0 48 0;
+#X connect 51 0 39 0;
+#X connect 52 0 42 0;
 #X coords 0 0 1 1 500 500 1 10 10;
 #X restore 10 10 pd \$0-grid;
