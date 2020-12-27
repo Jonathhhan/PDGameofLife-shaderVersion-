@@ -1,3 +1,5 @@
+// fragment program
+
 uniform sampler2D Tex0;
 uniform vec2 resolution;
 uniform float gridNumX;
