@@ -274,13 +274,13 @@ do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
 #X msg 526 255 Reset;
 #X obj 526 276 s \$0-main;
 #X obj 596 397 nbx 5 14 -1e+037 1e+037 0 0 empty \$0-Interval Interval
-0 -8 0 10 -257985 -1 -1 50 256;
+0 -8 0 10 -257985 -1 -1 129 256;
 #X obj 545 358 tgl 15 0 empty \$0-Sequence Sequence 17 7 0 10 -257985
 -1 -1 0 1;
 #X obj 526 339 bng 15 250 50 0 empty \$0-Iterate Iterate 17 7 0 10
 -257985 -1 -1;
 #X obj 296 332 nbx 5 14 1 1000 0 1 \$0-Interval empty Interval 56 7
-0 10 -257985 -1 -1 50 256;
+0 10 -257985 -1 -1 129 256;
 #X obj 340 282 nbx 5 14 1 10000 0 1 \$0-gridNumY \$0-gridNumYpreset
 Grid_Y 0 -8 0 10 -257985 -1 -1 50 256;
 #X obj 281 282 nbx 5 14 1 10000 0 1 \$0-gridNumX \$0-gridNumXpreset
@@ -308,7 +308,7 @@ a.shaderGameOfLife:setUniform1i("dCell_7" \, ofelia.dCell_7) \; a.shaderGameOfLi
 \, ofelia.dCell_8) \; a.fboCellsCopy:beginFbo() \; a.fboCells:draw(0
 \, 0) \; a.fboCellsCopy:endFbo() \; a.shaderGameOfLife:endShader()
 \; \; a.fboCells:beginFbo() \; a.fboCellsCopy:draw(0 \, 0) \; a.fboCells:endFbo()
-\; end \; \; function ofelia.exit() \; shader:unload() \; end \;;
+\; end \; \;;
 #X obj 526 172 pack 1 1;
 #N canvas 796 668 394 289 Living_Cells 0;
 #X obj 56 27 tgl 15 0 empty \$0-Living_Cell_1 empty 17 7 0 10 -204786
