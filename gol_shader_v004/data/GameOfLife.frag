@@ -48,7 +48,7 @@ void main() {
               get( 1,  0) +
               get( 1,  1);
 	vec2 r = rule[sum];
-	if(get(0, 0) == 0) {
+	if (get(0, 0) == 0) {
 		gl_FragColor = vec4(r.x, r.x, r.x, 1.0);
 		}
 		else{
