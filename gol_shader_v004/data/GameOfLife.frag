@@ -52,7 +52,7 @@ void main() {
 	if (get(0, 0) == 0) {
 		gl_FragColor = vec4(r.x, r.x, r.x, 1.0);
 		}
-		else{
+		else {
 			gl_FragColor = vec4(r.y, r.y, r.y, 1.0);
 		}	
 }
