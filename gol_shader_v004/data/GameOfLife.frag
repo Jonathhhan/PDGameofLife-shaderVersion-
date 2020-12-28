@@ -50,9 +50,9 @@ void main() {
 	get( 1,  1);
 	vec2 r = rule[sum];
 	if (get(0, 0) == 0) {
-		gl_FragColor = vec4(r.x, r.x, r.x, 1.0);
+		gl_FragColor = vec4(r.x, r.x, r.x, r.x);
 		}
 		else {
-		gl_FragColor = vec4(r.y, r.y, r.y, 1.0);
+		gl_FragColor = vec4(r.y, r.y, r.y, r.y * - 1.0 + 1.0);
 		}
 }
