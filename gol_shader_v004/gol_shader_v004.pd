@@ -149,11 +149,12 @@ else \; a.Reset() \; end \; end \;;
 \; \; function M.bang() \; \; a.fboCells:allocate(a.gridNumX \, a.gridNumY)
 \; a.fboCellsCopy:allocate(a.gridNumX \, a.gridNumY) \; if ofelia.presetList
 ~= nil then \; if type(ofelia.presetList) ~= "table" then \; ofelia.presetList
-= {ofelia.presetList} \; end \; \; a.fboCells:beginFbo() \; ofClear(255)
-\; color(0) \; for k = 1 \, #ofelia.presetList do \; x = ofelia.presetList[k]
-// a.gridNumY + 1 \; y = ofelia.presetList[k] % a.gridNumY + 1 \; rectangle(x
-* 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; end \; a.fboCells:endFbo() \; \;
-else \; a.Reset() \; end \; end \;;
+= {ofelia.presetList} \; end \; \; a.fboCells:beginFbo() \; ofClear(255
+\, 0 \, 0 \, 0) \; color(0) \; for k = 1 \, #ofelia.presetList do \;
+x = ofelia.presetList[k] // a.gridNumY + 1 \; y = ofelia.presetList[k]
+% a.gridNumY + 1 \; rectangle(x * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \;
+end \; a.fboCells:endFbo() \; \; else \; a.Reset() \; end \; end \;
+;
 #X obj 44 162 ofelia d -c11 -k \$0-setPreset;
 #A __set local a = require("\$0-main") \; \; function ofelia.bang()
 \; \; a.fboCells:getTexture():readToPixels(a.pixels) \; local tab =
@@ -299,64 +300,56 @@ ofelia.dCell_2) \; a.shaderGameOfLife:setUniform1f("dCell_3" \, ofelia.dCell_3)
 a.shaderGameOfLife:setUniform1f("dCell_5" \, ofelia.dCell_5) \; a.shaderGameOfLife:setUniform1f("dCell_6"
 \, ofelia.dCell_6) \; a.shaderGameOfLife:setUniform1f("dCell_7" \,
 ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
-\; a.fboCellsCopy:beginFbo() \; a.fboCells:draw(0 \, 0) \; a.fboCellsCopy:endFbo()
-\; a.shaderGameOfLife:endShader() \; \; a.fboCells:beginFbo() \; a.fboCellsCopy:draw(0
-\, 0) \; a.fboCells:endFbo() \; end \; \;;
+\; a.fboCellsCopy:beginFbo() \; ofClear(0) \; a.fboCells:draw(0 \,
+0) \; a.fboCellsCopy:endFbo() \; a.shaderGameOfLife:endShader() \;
+\; a.fboCells:beginFbo() \; ofClear(0) \; a.fboCellsCopy:draw(0 \,
+0) \; a.fboCells:endFbo() \; end \; \;;
 #X obj 526 172 pack 1 1;
-#N canvas 55 585 751 163 Living_Cells 0;
-#X obj 109 39 tgl 15 0 empty \$0-Living_Cell_1 empty 17 7 0 10 -204786
+#N canvas 53 621 751 122 Living_Cells 0;
+#X obj 109 29 tgl 15 0 empty \$0-Living_Cell_1 empty 17 7 0 10 -204786
 -1 -1 0 1;
-#X obj 184 39 tgl 15 0 empty \$0-Living_Cell_2 empty 17 7 0 10 -204786
+#X obj 184 29 tgl 15 0 empty \$0-Living_Cell_2 empty 17 7 0 10 -204786
 -1 -1 1 1;
-#X obj 260 39 tgl 15 0 empty \$0-Living_Cell_3 empty 17 7 0 10 -204786
+#X obj 260 29 tgl 15 0 empty \$0-Living_Cell_3 empty 17 7 0 10 -204786
 -1 -1 1 1;
-#X obj 336 39 tgl 15 0 empty \$0-Living_Cell_4 empty 17 7 0 10 -204786
+#X obj 336 29 tgl 15 0 empty \$0-Living_Cell_4 empty 17 7 0 10 -204786
 -1 -1 0 1;
-#X obj 411 39 tgl 15 0 empty \$0-Living_Cell_5 empty 17 7 0 10 -204786
+#X obj 411 29 tgl 15 0 empty \$0-Living_Cell_5 empty 17 7 0 10 -204786
 -1 -1 0 1;
-#X obj 486 39 tgl 15 0 empty \$0-Living_Cell_6 empty 17 7 0 10 -204786
+#X obj 486 29 tgl 15 0 empty \$0-Living_Cell_6 empty 17 7 0 10 -204786
 -1 -1 0 1;
-#X obj 562 39 tgl 15 0 empty \$0-Living_Cell_7 empty 17 7 0 10 -204786
+#X obj 562 29 tgl 15 0 empty \$0-Living_Cell_7 empty 17 7 0 10 -204786
 -1 -1 0 1;
-#X obj 638 39 tgl 15 0 empty \$0-Living_Cell_8 empty 17 7 0 10 -204786
+#X obj 638 29 tgl 15 0 empty \$0-Living_Cell_8 empty 17 7 0 10 -204786
 -1 -1 0 1;
-#X msg 336 80 lCell_4 \$1;
-#X obj 336 101 s \$0-shader;
-#X obj 109 101 s \$0-shader;
-#X obj 184 101 s \$0-shader;
-#X obj 260 101 s \$0-shader;
-#X obj 638 101 s \$0-shader;
-#X obj 411 101 s \$0-shader;
-#X obj 486 101 s \$0-shader;
-#X obj 562 101 s \$0-shader;
-#X msg 109 80 lCell_1 \$1;
-#X msg 184 80 lCell_2 \$1;
-#X msg 260 80 lCell_3 \$1;
-#X msg 411 80 lCell_5 \$1;
-#X msg 486 80 lCell_6 \$1;
-#X msg 562 80 lCell_7 \$1;
-#X msg 638 80 lCell_8 \$1;
-#X obj 35 41 tgl 15 0 empty \$0-Living_Cell_0 empty 17 7 0 10 -204786
+#X msg 336 49 lCell_4 \$1;
+#X obj 336 70 s \$0-shader;
+#X obj 109 70 s \$0-shader;
+#X obj 184 70 s \$0-shader;
+#X obj 260 70 s \$0-shader;
+#X obj 638 70 s \$0-shader;
+#X obj 411 70 s \$0-shader;
+#X obj 486 70 s \$0-shader;
+#X obj 562 70 s \$0-shader;
+#X msg 109 49 lCell_1 \$1;
+#X msg 184 49 lCell_2 \$1;
+#X msg 260 49 lCell_3 \$1;
+#X msg 411 49 lCell_5 \$1;
+#X msg 486 49 lCell_6 \$1;
+#X msg 562 49 lCell_7 \$1;
+#X msg 638 49 lCell_8 \$1;
+#X obj 35 31 tgl 15 0 empty \$0-Living_Cell_0 empty 17 7 0 10 -204786
 -1 -1 0 1;
-#X obj 34 101 s \$0-shader;
-#X msg 35 82 lCell_0 \$1;
-#X obj 109 59 == 0;
-#X obj 184 59 == 0;
-#X obj 260 59 == 0;
-#X obj 336 59 == 0;
-#X obj 35 61 == 0;
-#X obj 411 59 == 0;
-#X obj 486 59 == 0;
-#X obj 562 59 == 0;
-#X obj 638 59 == 0;
-#X connect 0 0 27 0;
-#X connect 1 0 28 0;
-#X connect 2 0 29 0;
-#X connect 3 0 30 0;
-#X connect 4 0 32 0;
-#X connect 5 0 33 0;
-#X connect 6 0 34 0;
-#X connect 7 0 35 0;
+#X obj 34 70 s \$0-shader;
+#X msg 35 51 lCell_0 \$1;
+#X connect 0 0 17 0;
+#X connect 1 0 18 0;
+#X connect 2 0 19 0;
+#X connect 3 0 8 0;
+#X connect 4 0 20 0;
+#X connect 5 0 21 0;
+#X connect 6 0 22 0;
+#X connect 7 0 23 0;
 #X connect 8 0 9 0;
 #X connect 17 0 10 0;
 #X connect 18 0 11 0;
@@ -365,72 +358,54 @@ ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
 #X connect 21 0 15 0;
 #X connect 22 0 16 0;
 #X connect 23 0 13 0;
-#X connect 24 0 31 0;
+#X connect 24 0 26 0;
 #X connect 26 0 25 0;
-#X connect 27 0 17 0;
-#X connect 28 0 18 0;
-#X connect 29 0 19 0;
-#X connect 30 0 8 0;
-#X connect 31 0 26 0;
-#X connect 32 0 20 0;
-#X connect 33 0 21 0;
-#X connect 34 0 22 0;
-#X connect 35 0 23 0;
 #X restore 545 458 pd Living_Cells;
-#N canvas 55 809 750 169 Dead_Cells 0;
-#X obj 113 41 tgl 15 0 empty \$0-Dead_Cell_1 empty 17 7 0 10 -261234
+#N canvas 55 809 750 127 Dead_Cells 0;
+#X obj 113 31 tgl 15 0 empty \$0-Dead_Cell_1 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 188 41 tgl 15 0 empty \$0-Dead_Cell_2 empty 17 7 0 10 -261234
+#X obj 188 31 tgl 15 0 empty \$0-Dead_Cell_2 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 264 41 tgl 15 0 empty \$0-Dead_Cell_3 empty 17 7 0 10 -261234
+#X obj 264 31 tgl 15 0 empty \$0-Dead_Cell_3 empty 17 7 0 10 -261234
 -1 -1 1 1;
-#X obj 340 41 tgl 15 0 empty \$0-Dead_Cell_4 empty 17 7 0 10 -261234
+#X obj 340 31 tgl 15 0 empty \$0-Dead_Cell_4 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 415 41 tgl 15 0 empty \$0-Dead_Cell_5 empty 17 7 0 10 -261234
+#X obj 415 31 tgl 15 0 empty \$0-Dead_Cell_5 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 490 41 tgl 15 0 empty \$0-Dead_Cell_6 empty 17 7 0 10 -261234
+#X obj 490 31 tgl 15 0 empty \$0-Dead_Cell_6 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 566 41 tgl 15 0 empty \$0-Dead_Cell_7 empty 17 7 0 10 -261234
+#X obj 566 31 tgl 15 0 empty \$0-Dead_Cell_7 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 642 41 tgl 15 0 empty \$0-Dead_Cell_8 empty 17 7 0 10 -261234
+#X obj 642 31 tgl 15 0 empty \$0-Dead_Cell_8 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 340 103 s \$0-shader;
-#X obj 113 103 s \$0-shader;
-#X obj 188 103 s \$0-shader;
-#X obj 264 103 s \$0-shader;
-#X obj 642 103 s \$0-shader;
-#X obj 415 103 s \$0-shader;
-#X obj 490 103 s \$0-shader;
-#X obj 566 103 s \$0-shader;
-#X msg 340 82 dCell_4 \$1;
-#X msg 113 82 dCell_1 \$1;
-#X msg 188 82 dCell_2 \$1;
-#X msg 264 82 dCell_3 \$1;
-#X msg 415 82 dCell_5 \$1;
-#X msg 490 82 dCell_6 \$1;
-#X msg 566 82 dCell_7 \$1;
-#X msg 642 82 dCell_8 \$1;
-#X obj 38 41 tgl 15 0 empty \$0-Dead_Cell_0 empty 17 7 0 10 -261234
+#X obj 340 72 s \$0-shader;
+#X obj 113 72 s \$0-shader;
+#X obj 188 72 s \$0-shader;
+#X obj 264 72 s \$0-shader;
+#X obj 642 72 s \$0-shader;
+#X obj 415 72 s \$0-shader;
+#X obj 490 72 s \$0-shader;
+#X obj 566 72 s \$0-shader;
+#X msg 340 51 dCell_4 \$1;
+#X msg 113 51 dCell_1 \$1;
+#X msg 188 51 dCell_2 \$1;
+#X msg 264 51 dCell_3 \$1;
+#X msg 415 51 dCell_5 \$1;
+#X msg 490 51 dCell_6 \$1;
+#X msg 566 51 dCell_7 \$1;
+#X msg 642 51 dCell_8 \$1;
+#X obj 38 31 tgl 15 0 empty \$0-Dead_Cell_0 empty 17 7 0 10 -261234
 -1 -1 0 1;
-#X obj 38 103 s \$0-shader;
-#X msg 38 82 dCell_0 \$1;
-#X obj 113 61 == 0;
-#X obj 188 61 == 0;
-#X obj 264 61 == 0;
-#X obj 340 61 == 0;
-#X obj 415 61 == 0;
-#X obj 490 61 == 0;
-#X obj 566 61 == 0;
-#X obj 642 61 == 0;
-#X obj 38 61 == 0;
-#X connect 0 0 27 0;
-#X connect 1 0 28 0;
-#X connect 2 0 29 0;
-#X connect 3 0 30 0;
-#X connect 4 0 31 0;
-#X connect 5 0 32 0;
-#X connect 6 0 33 0;
-#X connect 7 0 34 0;
+#X obj 38 72 s \$0-shader;
+#X msg 38 51 dCell_0 \$1;
+#X connect 0 0 17 0;
+#X connect 1 0 18 0;
+#X connect 2 0 19 0;
+#X connect 3 0 16 0;
+#X connect 4 0 20 0;
+#X connect 5 0 21 0;
+#X connect 6 0 22 0;
+#X connect 7 0 23 0;
 #X connect 16 0 8 0;
 #X connect 17 0 9 0;
 #X connect 18 0 10 0;
@@ -439,17 +414,8 @@ ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
 #X connect 21 0 14 0;
 #X connect 22 0 15 0;
 #X connect 23 0 12 0;
-#X connect 24 0 35 0;
+#X connect 24 0 26 0;
 #X connect 26 0 25 0;
-#X connect 27 0 17 0;
-#X connect 28 0 18 0;
-#X connect 29 0 19 0;
-#X connect 30 0 16 0;
-#X connect 31 0 20 0;
-#X connect 32 0 21 0;
-#X connect 33 0 22 0;
-#X connect 34 0 23 0;
-#X connect 35 0 26 0;
 #X restore 545 479 pd Dead_Cells;
 #X obj 144 177 hradio 15 1 1 16 \$0-Pattern empty Pattern 0 -8 0 10
 -257985 -1 -1 1;
