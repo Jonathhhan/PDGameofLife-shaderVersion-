@@ -22,7 +22,7 @@ uniform float dCell_6;
 uniform float dCell_7;
 uniform float dCell_8;
 
-vec2 rule[9] = vec2[9](
+vec2 rule[9] = vec2[9] (
 	vec2(lCell_8, dCell_8),
 	vec2(lCell_7, dCell_7),
 	vec2(lCell_6, dCell_6),
