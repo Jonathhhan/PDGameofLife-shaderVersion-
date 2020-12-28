@@ -49,9 +49,9 @@
 #X obj 148 311 bng 15 250 50 0 \$0-Iterate empty Iterate 17 7 0 10
 -257985 -1 -1;
 #X obj 526 58 nbx 5 14 1 10000 0 0 empty \$0-gridNumX gridNumX 0 -8
-0 10 -257985 -1 -1 300 256;
+0 10 -257985 -1 -1 75 256;
 #X obj 544 111 nbx 5 14 1 10000 0 0 empty \$0-gridNumY gridNumY 0 -8
-0 10 -257985 -1 -1 200 256;
+0 10 -257985 -1 -1 50 256;
 #X obj 526 297 ofelia d -k \$0-main;
 #A __set if type(window) ~= "userdata" then \; window = ofWindow()
 \; end \; \; \; local a = ofelia \; local canvas = ofCanvas(this) \;
@@ -105,7 +105,7 @@ ofClear(255) \; a.fboCells:endFbo() \; \; end \; \; \; function a.exit()
 #X obj 44 142 bng 15 250 50 0 empty \$0-Save_Pattern Save_Pattern 17
 7 0 10 -257985 -1 -1;
 #X obj 79 32 hradio 15 1 0 16 empty \$0-Pattern Pattern 0 -8 0 10 -257985
--1 -1 5;
+-1 -1 1;
 #X obj 44 204 text define -k \$0-preset;
 #A set 150 100 6445 6544 6546 6644 6646 6745 6940 6941 6949 6950 7039
 7042 7048 7051 7052 7140 7141 7149 7150 7345 7444 7446 7544 7546 7645
@@ -268,15 +268,15 @@ do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
 #X obj 596 397 nbx 5 14 -1e+037 1e+037 0 0 empty \$0-Interval Interval
 0 -8 0 10 -257985 -1 -1 50 256;
 #X obj 545 358 tgl 15 0 empty \$0-Sequence Sequence 17 7 0 10 -257985
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 526 339 bng 15 250 50 0 empty \$0-Iterate Iterate 17 7 0 10
 -257985 -1 -1;
 #X obj 302 332 nbx 5 14 1 1000 0 1 \$0-Interval empty Interval 56 7
 0 10 -257985 -1 -1 50 256;
 #X obj 340 282 nbx 5 14 1 10000 0 1 \$0-gridNumY \$0-gridNumYpreset
-Grid_Y 0 -8 0 10 -257985 -1 -1 200 256;
+Grid_Y 0 -8 0 10 -257985 -1 -1 50 256;
 #X obj 281 282 nbx 5 14 1 10000 0 1 \$0-gridNumX \$0-gridNumXpreset
-Grid_X 0 -8 0 10 -257985 -1 -1 300 256;
+Grid_X 0 -8 0 10 -257985 -1 -1 75 256;
 #X msg 526 193 gridNumX \$1 \, gridNumY \$2 \, gridSize;
 #X obj 544 151 t b f;
 #X obj 545 416 metro 100;
@@ -452,7 +452,7 @@ ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
 #X connect 35 0 26 0;
 #X restore 545 479 pd Dead_Cells;
 #X obj 144 177 hradio 15 1 1 16 \$0-Pattern empty Pattern 0 -8 0 10
--257985 -1 -1 5;
+-257985 -1 -1 1;
 #X obj 282 239 tgl 15 1 \$0-raster empty Raster 17 7 0 10 -257985 -1
 -1 1 1;
 #X obj 589 235 tgl 15 0 empty \$0-raster Raster 17 7 0 10 -257985 -1
@@ -466,7 +466,7 @@ ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
 #X obj 148 331 tgl 15 1 \$0-Living_Cell_0 empty empty 17 7 0 10 -204786
 -1 -1 0 1;
 #X obj 212 311 tgl 15 1 \$0-Sequence empty Sequence 17 7 0 10 -257985
--1 -1 1 1;
+-1 -1 0 1;
 #X connect 24 0 51 0;
 #X connect 25 0 50 0;
 #X connect 29 0 30 0;
