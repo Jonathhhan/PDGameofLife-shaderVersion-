@@ -68,11 +68,11 @@ clock:delay(0) \; else \; window:create() \; end \; end \; \; \; function
 a.free() \; window:destroy() \; ofWindow.removeListener("setup" \,
 this) \; ofWindow.removeListener("draw" \, this) \; ofWindow.removeListener("mousePressed"
 \, this) \; ofWindow.removeListener("exit" \, this) \; end \; \; \;
-function a.setup() \; ofSetWindowTitle("Game of Life") \; ofBackground(255)
-\; a.width \, a.height = ofGetWidth() \, ofGetHeight() \; a.fboLines:allocate(a.width
-\, a.height) \; a.shaderGameOfLife:load(shaderDir .. "GameOfLife")
-\; a.shaderRaster:load(shaderDir .. "Raster") \; end \; \; \; function
-a.draw() \; a.fboCells:getTexture():setTextureMinMagFilter(GL_NEAREST
+function a.setup() \; ofSetWindowTitle("Game of Life") \; ofBackground(150
+\, 230 \, 255 \, 255) \; a.width \, a.height = ofGetWidth() \, ofGetHeight()
+\; a.fboLines:allocate(a.width \, a.height) \; a.shaderGameOfLife:load(shaderDir
+.. "GameOfLife") \; a.shaderRaster:load(shaderDir .. "Raster") \; end
+\; \; \; function a.draw() \; a.fboCells:getTexture():setTextureMinMagFilter(GL_NEAREST
 \, GL_NEAREST) \; a.fboCells:getTexture():setTextureWrap(GL_REPEAT
 \, GL_REPEAT) \; a.fboCells:draw(0 \, 0 \, a.width \, a.height) \;
 if ofelia.raster == 1 then \; a.fboLines:draw(0 \, 0) \; end \; end
