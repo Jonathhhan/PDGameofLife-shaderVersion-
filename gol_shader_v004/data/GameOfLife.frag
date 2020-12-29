@@ -35,7 +35,7 @@ vec2 rule[9] = vec2[9](
 );
 
 int get(int x, int y) {
-    return int(texture2D(Tex0, (gl_FragCoord.xy + vec2(x, y)) / resolution).a);
+	return int(texture2D(Tex0, (gl_FragCoord.xy + vec2(x, y)) / resolution).a);
 }
 
 void main() {
@@ -51,8 +51,8 @@ void main() {
 	vec2 r = rule[sum];
 	if (get(0, 0) == 1) {
 		gl_FragColor = vec4(0., 0., 0., r.x);
+	}
+		else  {
+		gl_FragColor = vec4(0., 0., 0., r.y);
 		}
-			else  {
-			gl_FragColor = vec4(0., 0., 0., r.y);
-			}
 }
