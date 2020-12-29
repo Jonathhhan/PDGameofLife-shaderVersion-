@@ -1,5 +1,5 @@
 #N canvas 1243 69 523 533 10;
-#N canvas 1128 61 779 528 \$0-grid 0;
+#N canvas 1086 46 779 528 \$0-grid 0;
 #X obj 10 10 cnv 15 500 500 empty empty empty 20 12 0 14 -257985 -66577
 0;
 #X obj 35 20 cnv 15 450 480 empty empty Game_of_Life_(shader) 40 50
@@ -161,14 +161,14 @@ end \; a.fboCells:endFbo() \; \; else \; a.Reset() \; end \; end \;
 \; \; a.fboCells:getTexture():readToPixels(a.pixels) \; local tab =
 {} \; tab[1] = a.gridNumX \; tab[2] = a.gridNumY \; for x = 1 \, a.gridNumX
 do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
-- 1).r == 0 then \; table.insert(tab \, a.gridNumY * x - a.gridNumY
+- 1).a == 255 then \; table.insert(tab \, a.gridNumY * x - a.gridNumY
 + y - 1) \; end \; end \; end \; \; return tab \; end \;;
 #X obj 259 95 ofelia d -c11 -k \$0-setPresetCopy;
 #A __set local a = require("\$0-main") \; \; function ofelia.bang()
 \; \; a.fboCells:getTexture():readToPixels(a.pixels) \; local tab =
 {} \; tab[1] = a.gridNumX \; tab[2] = a.gridNumY \; for x = 1 \, a.gridNumX
 do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
-- 1).r == 0 then \; table.insert(tab \, a.gridNumY * x - a.gridNumY
+- 1).a == 255 then \; table.insert(tab \, a.gridNumY * x - a.gridNumY
 + y - 1) \; end \; end \; end \; \; return tab \; end \;;
 #X obj 44 225 text define \$0-presetCopy;
 #X obj 260 177 text get \$0-presetCopy;
