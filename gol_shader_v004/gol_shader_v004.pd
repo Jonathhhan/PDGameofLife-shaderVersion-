@@ -76,14 +76,14 @@ function a.setup() \; ofSetWindowTitle("Game of Life") \; ofBackground(150
 \, GL_NEAREST) \; a.fboCells:getTexture():setTextureWrap(GL_REPEAT
 \, GL_REPEAT) \; a.fboCells:draw(0 \, 0 \, a.width \, a.height) \;
 if ofelia.raster == 1 then \; a.fboLines:draw(0 \, 0) \; end \; end
-\; \; \; function a.mousePressed() \; \; a.fboCells:getTexture():readToPixels(a.pixels)
-\; x = (ofGetMouseX() + (a.width/a.gridNumX)) // (a.width/a.gridNumX)
-\; y = (ofGetMouseY() + (a.height/a.gridNumY)) // (a.height/a.gridNumY)
-\; \; a.fboCells:beginFbo() \; ofDisableAlphaBlending() \; if a.pixels:getColor(x
-- 1 \, y - 1).a == 255 then \; color(255 \, 255 \, 255 \, 0) \; rectangle(x
-* 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; else \; color(0 \, 0 \, 0 \, 255)
-\; rectangle(x * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; end \; a.fboCells:endFbo()
-\; \; end \; \; \; function a.gridSize() \; \; a.fboCells:allocate(a.gridNumX
+\; \; \; function a.mousePressed(e) \; \; a.fboCells:getTexture():readToPixels(a.pixels)
+\; x = (e.x + (a.width/a.gridNumX)) // (a.width/a.gridNumX) \; y =
+(e.y + (a.height/a.gridNumY)) // (a.height/a.gridNumY) \; \; a.fboCells:beginFbo()
+\; ofDisableAlphaBlending() \; if a.pixels:getColor(x - 1 \, y - 1).a
+== 255 then \; color(255 \, 255 \, 255 \, 0) \; rectangle(x * 1 - 1
+\, y * 1 - 1 \, 1 \, 1) \; else \; color(0 \, 0 \, 0 \, 255) \; rectangle(x
+* 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; end \; a.fboCells:endFbo() \; \;
+end \; \; \; function a.gridSize() \; \; a.fboCells:allocate(a.gridNumX
 \, a.gridNumY) \; a.fboCellsCopy:allocate(a.gridNumX \, a.gridNumY)
 \; \; a.shaderRaster:beginShader() \; a.shaderRaster:setUniformTexture("Tex0"
 \, a.fboLines:getTexture() \, 1) \; a.shaderRaster:setUniform2f("resolution"
