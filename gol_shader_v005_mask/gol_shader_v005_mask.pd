@@ -97,10 +97,10 @@ a.gridNumX) \; shaderRaster:setUniform1f("gridNumY" \, a.gridNumY)
 \, a.height) \; fboLines:endFbo() \; shaderRaster:endShader() \; \;
 a.fboCells:beginFbo() \; ofClear(255) \; a.fboCells:endFbo() \; \;
 end \; \; \; function a.Reset() \; \; a.fboCells:beginFbo() \; ofClear(255)
-\; a.fboCells:endFbo() \; \; end \; \; \; function a.exit() \; pixels:clear()
-\; imgFront:clear() \; imgBack:clear() \; fboLines:clear() \; shaderRaster:unload()
-\; a.shaderGameOfLife:unload() \; a.fboCells:clear() \; a.fboCellsCopy:clear()
-\; end \; \;;
+\; a.fboCells:endFbo() \; \; end \; \; \; function a.exit() \; imgFront:clear()
+\; imgBack:clear() \; fboLines:clear() \; shaderRaster:unload() \;
+a.pixels:clear() \; a.fboCells:clear() \; a.fboCellsCopy:clear() \;
+a.shaderGameOfLife:unload() \; end \; \;;
 #X obj 526 214 s \$0-main;
 #N canvas 821 650 662 286 pattern 0;
 #X obj 259 75 bng 15 250 50 0 empty \$0-Copy_Pattern Copy_Pattern 17
