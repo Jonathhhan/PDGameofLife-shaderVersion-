@@ -275,7 +275,7 @@ do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
 #X obj 596 397 nbx 5 14 -1e+037 1e+037 0 0 empty \$0-Interval Interval
 0 -8 0 10 -257985 -1 -1 50 256;
 #X obj 545 358 tgl 15 0 empty \$0-Sequence Sequence 17 7 0 10 -257985
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 526 339 bng 15 250 50 0 empty \$0-Iterate Iterate 17 7 0 10
 -257985 -1 -1;
 #X obj 302 332 nbx 5 14 1 1000 0 1 \$0-Interval empty Interval 56 7
@@ -439,7 +439,7 @@ ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
 #X obj 148 331 tgl 15 1 \$0-Living_Cell_0 empty empty 17 7 0 10 -204786
 -1 -1 0 1;
 #X obj 212 311 tgl 15 1 \$0-Sequence empty Sequence 17 7 0 10 -257985
--1 -1 1 1;
+-1 -1 0 1;
 #X connect 24 0 51 0;
 #X connect 25 0 50 0;
 #X connect 29 0 30 0;
