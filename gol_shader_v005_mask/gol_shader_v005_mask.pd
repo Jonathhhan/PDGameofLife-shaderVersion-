@@ -1,4 +1,4 @@
-#N canvas 1243 69 523 533 10;
+#N canvas 1244 69 523 533 10;
 #N canvas 1086 46 779 528 \$0-grid 0;
 #X obj 10 10 cnv 15 500 500 empty empty empty 20 12 0 14 -257985 -66577
 0;
@@ -141,20 +141,22 @@ a.shaderGameOfLife:unload() \; end \; \;;
 #A __set local a = require("\$0-main") \; \; local rectangle = ofDrawRectangle
 \; local x \, y \, k = 0 \, 0 \, 0 \; \; function M.bang() \; \; if
 ofelia.presetList ~= nil then \; if type(ofelia.presetList) ~= "table"
-then \; ofelia.presetList = {ofelia.presetList} \; end \; \; a.fboCells:beginFbo()
-\; ofSetColor(255) \; for k = 1 \, #ofelia.presetList do \; x = ofelia.presetList[k]
-// a.gridNumY + 1 \; y = ofelia.presetList[k] % a.gridNumY + 1 \; rectangle(x
-* 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; end \; a.fboCells:endFbo() \; \;
-else \; a.Reset() \; end \; end \;;
+then \; ofelia.presetList = {ofelia.presetList} \; end \; a.Reset()
+\; \; a.fboCells:beginFbo() \; ofSetColor(255) \; for k = 1 \, #ofelia.presetList
+do \; x = ofelia.presetList[k] // a.gridNumY + 1 \; y = ofelia.presetList[k]
+% a.gridNumY + 1 \; rectangle(x * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \;
+end \; a.fboCells:endFbo() \; \; else \; a.Reset() \; end \; end \;
+;
 #X obj 106 115 ofelia d -k \$0-getPreset;
 #A __set local a = require("\$0-main") \; \; local rectangle = ofDrawRectangle
 \; local x \, y \, k = 0 \, 0 \, 0 \; \; function M.bang() \; \; if
 ofelia.presetList ~= nil then \; if type(ofelia.presetList) ~= "table"
-then \; ofelia.presetList = {ofelia.presetList} \; end \; \; a.fboCells:beginFbo()
-\; ofSetColor(255) \; for k = 1 \, #ofelia.presetList do \; x = ofelia.presetList[k]
-// a.gridNumY + 1 \; y = ofelia.presetList[k] % a.gridNumY + 1 \; rectangle(x
-* 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; end \; a.fboCells:endFbo() \; \;
-else \; a.Reset() \; end \; end \;;
+then \; ofelia.presetList = {ofelia.presetList} \; end \; a.Reset()
+\; \; a.fboCells:beginFbo() \; ofSetColor(255) \; for k = 1 \, #ofelia.presetList
+do \; x = ofelia.presetList[k] // a.gridNumY + 1 \; y = ofelia.presetList[k]
+% a.gridNumY + 1 \; rectangle(x * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \;
+end \; a.fboCells:endFbo() \; \; else \; a.Reset() \; end \; end \;
+;
 #X obj 44 162 ofelia d -c11 -k \$0-setPreset;
 #A __set local a = require("\$0-main") \; \; function ofelia.bang()
 \; \; a.fboCells:getTexture():readToPixels(a.pixels) \; local tab =
@@ -267,13 +269,13 @@ do \; for y = 1 \, a.gridNumY do \; if a.pixels:getColor(x - 1 \, y
 #X msg 526 255 Reset;
 #X obj 526 276 s \$0-main;
 #X obj 596 397 nbx 5 14 -1e+037 1e+037 0 0 empty \$0-Interval Interval
-0 -8 0 10 -257985 -1 -1 50 256;
+0 -8 0 10 -257985 -1 -1 19 256;
 #X obj 545 358 tgl 15 0 empty \$0-Sequence Sequence 17 7 0 10 -257985
 -1 -1 0 1;
 #X obj 526 339 bng 15 250 50 0 empty \$0-Iterate Iterate 17 7 0 10
 -257985 -1 -1;
 #X obj 302 332 nbx 5 14 1 1000 0 1 \$0-Interval empty Interval 56 7
-0 10 -257985 -1 -1 50 256;
+0 10 -257985 -1 -1 19 256;
 #X obj 340 282 nbx 5 14 1 10000 0 1 \$0-gridNumY \$0-gridNumYpreset
 Grid_Y 0 -8 0 10 -257985 -1 -1 50 256;
 #X obj 281 282 nbx 5 14 1 10000 0 1 \$0-gridNumX \$0-gridNumXpreset
