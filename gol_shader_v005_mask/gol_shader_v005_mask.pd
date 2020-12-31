@@ -79,7 +79,7 @@ function a.draw() \; a.fboCells:getTexture():setTextureMinMagFilter(GL_NEAREST
 \, GL_NEAREST) \; a.fboCells:getTexture():setTextureWrap(GL_REPEAT
 \, GL_REPEAT) \; imgFront:getTexture():setAlphaMask(a.fboCells:getTexture())
 \; imgBack:draw(0 \, 0) \; imgFront:draw(0 \, 0) \; if ofelia.raster
-== 1 then \; a.fboLines:draw(0 \, 0) \; end \; end \; \; \; function
+== 1 then \; fboLines:draw(0 \, 0) \; end \; end \; \; \; function
 a.mousePressed(e) \; \; a.fboCells:getTexture():readToPixels(a.pixels)
 \; x = (e.x + (a.width/a.gridNumX)) // (a.width/a.gridNumX) \; y =
 (e.y + (a.height/a.gridNumY)) // (a.height/a.gridNumY) \; \; a.fboCells:beginFbo()
@@ -427,9 +427,9 @@ ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
 #X obj 144 177 hradio 15 1 1 16 \$0-Pattern empty Pattern 0 -8 0 10
 -257985 -1 -1 1;
 #X obj 282 239 tgl 15 1 \$0-raster empty Raster 17 7 0 10 -257985 -1
--1 0 1;
+-1 1 1;
 #X obj 589 235 tgl 15 0 empty \$0-raster Raster 17 7 0 10 -257985 -1
--1 0 1;
+-1 1 1;
 #X obj 589 276 s \$0-main;
 #X msg 589 255 raster \$1;
 #X obj 544 130 change;
