@@ -140,24 +140,20 @@ a.shaderGameOfLife:unload() \; end \; \;;
 #X obj 260 219 ofelia d -k \$0-getPresetCopy;
 #A __set local a = require("\$0-main") \; \; local rectangle \, color
 = ofDrawRectangle \, ofSetColor \; local x \, y \, k = 0 \, 0 \, 0
-\; \; function M.bang() \; \; a.fboCells:allocate(a.gridNumX \, a.gridNumY)
-\; a.fboCellsCopy:allocate(a.gridNumX \, a.gridNumY) \; if ofelia.presetList
-~= nil then \; if type(ofelia.presetList) ~= "table" then \; ofelia.presetList
-= {ofelia.presetList} \; end \; \; a.fboCells:beginFbo() \; color(255
-\, 255 \, 255 \, 255) \; for k = 1 \, #ofelia.presetList do \; x =
-ofelia.presetList[k] // a.gridNumY + 1 \; y = ofelia.presetList[k]
+\; \; function M.bang() \; \; if ofelia.presetList ~= nil then \; if
+type(ofelia.presetList) ~= "table" then \; ofelia.presetList = {ofelia.presetList}
+\; end \; \; a.fboCells:beginFbo() \; color(255) \; for k = 1 \, #ofelia.presetList
+do \; x = ofelia.presetList[k] // a.gridNumY + 1 \; y = ofelia.presetList[k]
 % a.gridNumY + 1 \; rectangle(x * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \;
 end \; a.fboCells:endFbo() \; \; else \; a.Reset() \; end \; end \;
 ;
 #X obj 106 115 ofelia d -k \$0-getPreset;
 #A __set local a = require("\$0-main") \; \; local rectangle \, color
 = ofDrawRectangle \, ofSetColor \; local x \, y \, k = 0 \, 0 \, 0
-\; \; function M.bang() \; \; a.fboCells:allocate(a.gridNumX \, a.gridNumY)
-\; a.fboCellsCopy:allocate(a.gridNumX \, a.gridNumY) \; if ofelia.presetList
-~= nil then \; if type(ofelia.presetList) ~= "table" then \; ofelia.presetList
-= {ofelia.presetList} \; end \; \; a.fboCells:beginFbo() \; color(255
-\, 255 \, 255 \, 255) \; for k = 1 \, #ofelia.presetList do \; x =
-ofelia.presetList[k] // a.gridNumY + 1 \; y = ofelia.presetList[k]
+\; \; function M.bang() \; \; if ofelia.presetList ~= nil then \; if
+type(ofelia.presetList) ~= "table" then \; ofelia.presetList = {ofelia.presetList}
+\; end \; \; a.fboCells:beginFbo() \; color(255) \; for k = 1 \, #ofelia.presetList
+do \; x = ofelia.presetList[k] // a.gridNumY + 1 \; y = ofelia.presetList[k]
 % a.gridNumY + 1 \; rectangle(x * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \;
 end \; a.fboCells:endFbo() \; \; else \; a.Reset() \; end \; end \;
 ;
