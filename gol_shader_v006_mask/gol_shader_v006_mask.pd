@@ -17,7 +17,7 @@
 #X msg 526 135 conway;
 #X msg 609 135 sequence \$1;
 #X obj 609 115 tgl 15 0 empty \$0-Sequence Sequence 17 7 0 10 -257985
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 526 115 bng 15 250 50 0 empty \$0-Iterate Iterate 17 7 0 10
 -257985 -1 -1;
 #X obj 526 88 s \$0-main;
@@ -81,7 +81,7 @@ Grid_X 0 -8 0 10 -257985 -1 -1 75 256;
 #X obj 302 332 nbx 5 14 1 1000 0 1 \$0-Interval empty Interval 56 7
 0 10 -257985 -1 -1 10 256;
 #X obj 212 311 tgl 15 1 \$0-Sequence empty Sequence 17 7 0 10 -257985
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 526 193 nbx 5 14 1 10000 0 0 empty \$0-gridNumX gridNumX 0 -8
 0 10 -257985 -1 -1 75 256;
 #X obj 609 193 nbx 5 14 1 10000 0 0 empty \$0-gridNumY gridNumY 0 -8
@@ -208,57 +208,57 @@ Grid_X 0 -8 0 10 -257985 -1 -1 75 256;
 #X restore 526 400 pd Living_Cells;
 #X obj 526 337 ofelia d -k \$0-main;
 #A __set if type(window) ~= "userdata" then \; window = ofWindow()
-\; end \; \; \; local a = ofelia \; local canvas = ofCanvas(this) \;
-local clock = ofClock(this \, "setup") \; local dataDir = canvas:getDir()
+\; end \; \; local a = ofelia \; local canvas = ofCanvas(this) \; local
+clock = ofClock(this \, "setup") \; local dataDir = canvas:getDir()
 .. "/data/" \; local x \, y \, i \, j \, counter = 0 \, 0 \, 0 \, 0
 \, - 1 \; local rectangle \, color = ofDrawRectangle \, ofSetColor
 \; local imgFront \, imgBack = ofImage() \, ofImage() \; a.fboCells
 \, a.fboCellsCopy \, a.fboLines = ofFbo() \, ofFbo() \, ofFbo() \;
 a.shaderGameOfLife \, a.shaderRaster = ofShader() \, ofShader() \;
-a.pixels = ofPixels() \; \; \; function a.new() \; ofWindow.addListener("setup"
+a.pixels = ofPixels() \; \; function a.new() \; ofWindow.addListener("setup"
 \, this) \; ofWindow.addListener("update" \, this) \; ofWindow.addListener("draw"
 \, this) \; ofWindow.addListener("mousePressed" \, this) \; ofWindow.addListener("exit"
 \, this) \; window:setPosition(30 \, 100) \; window:setSize(1200 \,
 800) \; if ofWindow.exists then \; clock:delay(0) \; else \; window:create()
-\; end \; end \; \; \; function a.free() \; window:destroy() \; ofWindow.removeListener("setup"
+\; end \; end \; \; function a.free() \; window:destroy() \; ofWindow.removeListener("setup"
 \, this) \; ofWindow.removeListener("update" \, this) \; ofWindow.removeListener("draw"
 \, this) \; ofWindow.removeListener("mousePressed" \, this) \; ofWindow.removeListener("exit"
-\, this) \; end \; \; \; function a.setup() \; ofSetWindowTitle("Game
+\, this) \; end \; \; function a.setup() \; ofSetWindowTitle("Game
 of Life") \; ofBackground(150 \, 230 \, 255 \, 255) \; a.width \, a.height
 = ofGetWidth() \, ofGetHeight() \; a.fboLines:allocate(a.width \, a.height)
 \; a.shaderGameOfLife:load(dataDir .. "GameOfLife") \; a.shaderRaster:load(dataDir
 .. "Raster") \; imgFront:load(dataDir .. "imgFront.jpg") \; imgBack:load(dataDir
-.. "imgBack.jpg") \; end \; \; \; function a.update() \; if a.gridNumX
-~= a.lastGridNumX or a.gridNumY ~= a.lastGridNumY then \; a.lastGridNumX
-\, a.lastGridNumY = a.gridNumX \, a.gridNumY \; a.fboCells:allocate(a.gridNumX
-\, a.gridNumY) \; a.fboCellsCopy:allocate(a.gridNumX \, a.gridNumY)
-\; a.shaderRaster:beginShader() \; a.shaderRaster:setUniformTexture("Tex0"
-\, a.fboLines:getTexture() \, 0) \; a.shaderRaster:setUniform2f("resolution"
-\, a.width \, a.height) \; a.shaderRaster:setUniform1f("gridNumX" \,
-a.gridNumX) \; a.shaderRaster:setUniform1f("gridNumY" \, a.gridNumY)
-\; a.fboLines:beginFbo() \; ofClear(0) \; ofDrawRectangle(0 \, 0 \,
-a.width \, a.height) \; a.fboLines:endFbo() \; a.shaderRaster:endShader()
+.. "imgBack.jpg") \; --ofSetFrameRate(240) \; --ofSetVerticalSync(false)
+\; end \; \; function a.update() \; if a.gridNumX ~= a.lastGridNumX
+or a.gridNumY ~= a.lastGridNumY then \; a.lastGridNumX \, a.lastGridNumY
+= a.gridNumX \, a.gridNumY \; a.fboCells:allocate(a.gridNumX \, a.gridNumY)
+\; a.fboCellsCopy:allocate(a.gridNumX \, a.gridNumY) \; a.shaderRaster:beginShader()
+\; a.shaderRaster:setUniformTexture("Tex0" \, a.fboLines:getTexture()
+\, 0) \; a.shaderRaster:setUniform2f("resolution" \, a.width \, a.height)
+\; a.shaderRaster:setUniform1f("gridNumX" \, a.gridNumX) \; a.shaderRaster:setUniform1f("gridNumY"
+\, a.gridNumY) \; a.fboLines:beginFbo() \; ofClear(0) \; ofDrawRectangle(0
+\, 0 \, a.width \, a.height) \; a.fboLines:endFbo() \; a.shaderRaster:endShader()
 \; end \; if a.presetState == 1 then \; a.preset() \; a.presetState
 = 0 \; end \; if a.presetCopyState == 1 then \; a.presetCopy() \; a.presetCopyState
 = 0 \; end \; if a.resetState == 1 then \; a.fboCells:beginFbo() \;
 ofClear(0) \; a.fboCells:endFbo() \; a.resetState = 0 \; end \; if
 a.sequence == 1 then \; counter = (counter + 1) % a.interval \; if
 counter == 0 then \; a.conway() \; end \; else \; counter = - 1 \;
-end \; end \; \; \; function a.draw() \; a.fboCells:getTexture():setTextureMinMagFilter(GL_NEAREST
+end \; end \; \; function a.draw() \; --ofTranslate(0 \, 0 \, -600)
+\; --ofRotateXDeg(30) \; a.fboCells:getTexture():setTextureMinMagFilter(GL_NEAREST
 \, GL_NEAREST) \; a.fboCells:getTexture():setTextureWrap(GL_REPEAT
 \, GL_REPEAT) \; imgFront:getTexture():setAlphaMask(a.fboCells:getTexture())
 \; imgBack:draw(0 \, 0) \; imgFront:draw(0 \, 0) \; if a.raster ==
-1 then \; a.fboLines:draw(0 \, 0) \; end \; end \; \; \; function a.mousePressed(e)
+1 then \; a.fboLines:draw(0 \, 0) \; end \; end \; \; function a.mousePressed(e)
 \; a.fboCells:getTexture():readToPixels(a.pixels) \; x = (e.x + (a.width/a.gridNumX))
 // (a.width/a.gridNumX) \; y = (e.y + (a.height/a.gridNumY)) // (a.height/a.gridNumY)
 \; a.fboCells:beginFbo() \; ofDisableAlphaBlending() \; if a.pixels:getColor(x
 - 1 \, y - 1).r == 255 then \; color(0 \, 0 \, 0 \, 0) \; rectangle(x
 * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; else \; color(255) \; rectangle(x
 * 1 - 1 \, y * 1 - 1 \, 1 \, 1) \; end \; a.fboCells:endFbo() \; end
-\; \; \; function a.exit() \; imgFront:clear() \; imgBack:clear() \;
-a.fboCells:clear() \; a.fboCellsCopy:clear() \; a.fboLines:clear()
-\; a.shaderGameOfLife:unload() \; a.shaderRaster:unload() \; a.pixels:clear()
-\; end \; \;;
+\; \; function a.exit() \; imgFront:clear() \; imgBack:clear() \; a.fboCells:clear()
+\; a.fboCellsCopy:clear() \; a.fboLines:clear() \; a.shaderGameOfLife:unload()
+\; a.shaderRaster:unload() \; a.pixels:clear() \; end \; \;;
 #N canvas 1231 662 662 322 pattern 0;
 #X obj 259 75 bng 15 250 50 0 empty \$0-Copy_Pattern Copy_Pattern 17
 7 0 10 -257985 -1 -1;
@@ -432,10 +432,10 @@ ofelia.dCell_7) \; a.shaderGameOfLife:setUniform1f("dCell_8" \, ofelia.dCell_8)
 #X connect 12 0 9 0;
 #X connect 16 0 3 0;
 #X connect 46 0 52 0;
-#X connect 46 0 49 0;
 #X connect 47 0 53 0;
-#X connect 47 0 51 0;
 #X connect 49 0 48 0;
 #X connect 51 0 50 0;
+#X connect 52 0 49 0;
+#X connect 53 0 51 0;
 #X coords 0 0 1 1 500 500 1 10 10;
 #X restore 10 10 pd \$0-grid;
